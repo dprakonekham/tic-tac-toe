@@ -26,6 +26,11 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 ol, ul {
 	list-style: none;
@@ -42,9 +47,22 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+.title{
+    padding: 10px;
+}
 .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.gameContainer{
     display: grid;
     width: 300px;
     height: 300px;
-    grid-template-columns: auto auto auto;
+    padding: 1em;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
 }
