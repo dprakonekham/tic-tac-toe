@@ -15,32 +15,38 @@ const gameBoard = (function () {
                 gridElement.style.backgroundColor = "black";
                 gridElement.style.color = "white";
                 gridElement.style.border = "1px solid green";
-                gridElement.addEventListener(`click`, function(e){
+                const event = (e) => {
+                    console.log(e);
                     let player = 1;
                     gridElement.textContent = "X";
                     //make div unclickable
-                    gridElement.removeEventListener(`click`, e);
+                    gridElement.removeEventListener(`click`, event);
+                    opponentPlay(i,j,event);
                     //Check for winner by using location of the cell as the argument
-                    let result = checkWinner(player,i,j);
+                    /*let result = checkWinner(player,i,j);
                     if(result == false){
                         opponentPlay(i,j);
                     }else{
 
                     }
-                });
+                    */
+                };
+                gridElement.addEventListener(`click`, event)
                 gameContainer.appendChild(gridElement);
                 boardRow.push(gridElement);       
             }
             board.push(boardRow);
         }
-        console.log(board);
     }
     const resetBoard = () => {
         //For every child of gameContainer, set the text content of every node to empty
         var children = gameContainer.children;
         for(let i = 0; i < children.length; i++){
-            children[i].textContent = " ";
+            children[i].textContent = "";
         }
+    }
+    const event = function(e){
+
     }
     return{turnCounter, board, createBoard, resetBoard}
 })();
@@ -53,7 +59,7 @@ resetButton.addEventListener(`click`, function(e){
     gameBoard.resetBoard();
 });
 
-function checkWinner(player, xPos,yPos){
+function checkWinner(player,xPos,yPos){
     let winner = false;
     if(player == 1){
         console.log(gameBoard.board[xPos][yPos])
@@ -72,13 +78,84 @@ function checkWinner(player, xPos,yPos){
     return winner;
 }
 
-function opponentPlay(xPos,yPos){
+function opponentPlay(xPos,yPos,e){
+    console.log(e);
     let player = 2;
     //Place depending on where the player last placed
+    let legalMove = false;
+    //For corners
+    if(xPos == 0 && yPos == 0){
+        let randomChoice = Math.floor(Math.random() * 4);
+        if(randomChoice == 0){
+            if(document.getElementById("10").textContent == ""){
+                document.getElementById("10").textContent = "O";
+                document.getElementById("10").removeEventListener(`click`, e);
+                legalMove = true;
+            }
+        }else if(randomChoice == 1){
+            if(document.getElementById("11").textContent == ""){
+                document.getElementById("11").textContent = "O";
+                document.getElementById("11").removeEventListener(`click`, e);
+                legalMove = true;
+            }
+        }else{
+            if(document.getElementById("01").textContent == ""){
+                document.getElementById("01").textContent = "O";
+                document.getElementById("01").removeEventListener(`click`, e);
+                legalMove = true;
+            }
+        }
+        if(legalMove == false){
+            while(legalMove == false){
+                for(let i = 2; i <= 0; i--){
+                    for(let j = 2; j <= 0; j--){
+                        if(document.getElementById(i.toString()+j.toString()).textContent == ""){
+                            document.getElementById(i.toString()+j.toString()).textContent == "O";
+                            document.getElementById(i.toString()+j.toString()).removeEventListener(`click`, e);
+                            legalMove = true;
+                        }
+                    }
+                }
+            }
+        }
+    }else if(xPos == 2 && yPos == 2){
+        let randomChoice = Math.floor(Math.random() * 4);
+        if(randomChoice == 0){
+            if(document.getElementById("12").textContent == ""){
+                document.getElementById("12").textContent = "O";
+                document.getElementById("12").removeEventListener(`click`, e);
+                legalMove = true;
+            }
+        }else if(randomChoice == 1){
+            if(document.getElementById("11").textContent == ""){
+                document.getElementById("11").textContent = "O";
+                document.getElementById("11").removeEventListener(`click`, e);
+                legalMove = true;
+            }
+        }else{
+            if(document.getElementById("21").textContent == ""){
+                document.getElementById("21").textContent = "O";
+                document.getElementById("21").removeEventListener(`click`, e);
+                legalMove = true;
+            }
+        }
+        if(legalMove == false){
+            while(legalMove == false){
+                for(let i = 0; i > 3; i++){
+                    for(let j = 0; j > 3; j++){
+                        if(document.getElementById(i.toString()+j.toString()).textContent == ""){
+                            document.getElementById(i.toString()+j.toString()).textContent == "O";
+                            document.getElementById(i.toString()+j.toString()).removeEventListener(`click`, e);
+                            legalMove = true;
+                        }
+                    }
+                }
+            }
+        }
 
-    //Remove event listener
+    }
 
     //Check for winner
-    checkWinner(player,newXPos,newYPos);
+    //checkWinner(player,xPos,yPos);
 
 }
