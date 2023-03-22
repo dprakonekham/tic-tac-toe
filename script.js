@@ -27,7 +27,7 @@ const gameBoard = (function () {
                     if(result == false){
                         opponentPlay(i,j);
                     }else{
-                        console.log("You won")
+                        resetBoard();
                     }
                 };
                 gridElement.addEventListener(`click`, clickEvent)
@@ -66,9 +66,8 @@ function checkWinner(player,xPos,yPos){
         //On turn 3 start checking for winner
         if(gameBoard.turnCounter >= 3 && gameBoard.turnCounter  < 5){
             console.log(xPos.toString()+yPos.toString())
-            if(coordinates == "11"){
-                //If middle (1,1), need to check every neighbor
-                //Starting with (0,0)
+            if(coordinates == "11"){//Starting with (0,0)
+                //For the middle cell (1,1), need to check these
                 if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
                     console.log("You win")
                 }else if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[2][1].textContent == "X"){
@@ -77,16 +76,8 @@ function checkWinner(player,xPos,yPos){
                     console.log("You win")
                 }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[1][0].textContent == "X"){
                     console.log("You win")   
-                }else if(gameBoard.board[2][2].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
-                    console.log("You win")
-                }else if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[0][1].textContent == "X"){
-                    console.log("You win") 
-                }else if(gameBoard.board[2][0].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
-                    console.log("You win")
-                }else if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[1][2].textContent == "X"){
-                    console.log("You win")
                 }
-            }else if(coordinates == "00"){
+            }else if(coordinates == "00"){//Now the top left corner
                 if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
                     console.log("You win")
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
@@ -94,7 +85,7 @@ function checkWinner(player,xPos,yPos){
                 }else if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
                     console.log("You win")
                 }
-            }else if(coordinates == "02"){
+            }else if(coordinates == "02"){//Now the top right corner
                 if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
                     console.log("You win")
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
@@ -102,7 +93,7 @@ function checkWinner(player,xPos,yPos){
                 }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
                     console.log("You win")
                 }
-            }else if(coordinates == "20"){
+            }else if(coordinates == "20"){//Now the bottom left corner
                 if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
                     console.log("You win")
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
@@ -110,7 +101,7 @@ function checkWinner(player,xPos,yPos){
                 }else if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
                     console.log("You win")
                 }
-            }else if(coordinates == "22"){
+            }else if(coordinates == "22"){//Now the bottom right corner
                 if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
                     console.log("You win")
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
@@ -118,7 +109,31 @@ function checkWinner(player,xPos,yPos){
                 }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
                     console.log("You win")
                 }
-            } 
+            }else if(coordinates == "01"){//Now the top middle
+                if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][1].textContent == "X"){
+                    console.log("You win")
+                }
+            }else if(coordinates == "12"){//Now the right middle
+                if(gameBoard.board[0][2].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[1][0].textContent == "X"){
+                    console.log("You win")
+                }
+            }else if(coordinates == "21"){//Now the bottom middle
+                if(gameBoard.board[2][2].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][1].textContent == "X"){
+                    console.log("You win")
+                }
+            }else if(coordinates == "10"){//Now the left middle
+                if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[1][2].textContent == "X"){
+                    console.log("You win")
+                }
+            }
         }else if(gameBoard.turnCounter  == 5){
         //On turn 5, the whole board will be filled
         //Check for winner, if not, tie
@@ -127,6 +142,7 @@ function checkWinner(player,xPos,yPos){
     }else{
 
     }
+
     return false;
 }
 
