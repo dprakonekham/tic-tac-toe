@@ -66,3 +66,8 @@ table {
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
 }
+.gameUI{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
