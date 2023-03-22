@@ -20,17 +20,15 @@ const gameBoard = (function () {
                     gridElement.textContent = "X";
                     //make div unclickable
                     gridElement.style.pointerEvents = "none";
-                    //console.log(i.toString()+j.toString());
-                    console.log(e.target)
-                    opponentPlay(i,j,e);
+                    console.log(i.toString()+j.toString());
                     //Check for winner by using location of the cell as the argument
-                    /*let result = checkWinner(player,i,j);
+                    let result = checkWinner(player,i,j);
+                    console.log("this is the result: " + result.toString())
                     if(result == false){
                         opponentPlay(i,j);
                     }else{
-
+                        console.log("You won")
                     }
-                    */
                 };
                 gridElement.addEventListener(`click`, clickEvent)
                 gameContainer.appendChild(gridElement);
@@ -59,13 +57,68 @@ resetButton.addEventListener(`click`, function(e){
 });
 
 function checkWinner(player,xPos,yPos){
+    let coordinates = xPos.toString()+yPos.toString();
+    console.log(coordinates)
+    gameBoard.turnCounter += 1;
     let winner = false;
+    console.log("Turn:" + gameBoard.turnCounter);
     if(player == 1){
-        console.log(gameBoard.board[xPos][yPos])
-        gameBoard.turnCounter += 1;
         //On turn 3 start checking for winner
         if(gameBoard.turnCounter >= 3 && gameBoard.turnCounter  < 5){
-                
+            console.log(xPos.toString()+yPos.toString())
+            if(coordinates == "11"){
+                //If middle (1,1), need to check every neighbor
+                //Starting with (0,0)
+                if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[2][1].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[0][2].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[1][0].textContent == "X"){
+                    console.log("You win")   
+                }else if(gameBoard.board[2][2].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[0][1].textContent == "X"){
+                    console.log("You win") 
+                }else if(gameBoard.board[2][0].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[1][2].textContent == "X"){
+                    console.log("You win")
+                }
+            }else if(coordinates == "00"){
+                if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
+                    console.log("You win")
+                }
+            }else if(coordinates == "02"){
+                if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
+                    console.log("You win")
+                }
+            }else if(coordinates == "20"){
+                if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
+                    console.log("You win")
+                }
+            }else if(coordinates == "22"){
+                if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
+                    console.log("You win")
+                }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
+                    console.log("You win")
+                }
+            } 
         }else if(gameBoard.turnCounter  == 5){
         //On turn 5, the whole board will be filled
         //Check for winner, if not, tie
@@ -74,33 +127,39 @@ function checkWinner(player,xPos,yPos){
     }else{
 
     }
-    return winner;
+    return false;
 }
 
 function opponentPlay(xPos,yPos){
-
+    let newXPos = 0;
+    let newYPos = 0;
     let player = 2;
     //Place depending on where the player last placed
     let legalMove = false;
-    //For corners
     if(xPos == 0 && yPos == 0){
         let randomChoice = Math.floor(Math.random() * 3);
         if(randomChoice == 0){
             if(document.getElementById("01").textContent == ""){
                 document.getElementById("01").textContent = "O";
                 document.getElementById("01").style.pointerEvents = "none";
+                newYPos = 1;
+                newXPos = 0;
                 legalMove = true;
             }
         }else if(randomChoice == 1){
             if(document.getElementById("11").textContent == ""){
                 document.getElementById("11").textContent = "O";
                 document.getElementById("11").style.pointerEvents = "none";
+                newYPos = 1;
+                newXPos = 1;
                 legalMove = true;
             }
         }else{
             if(document.getElementById("10").textContent == ""){
                 document.getElementById("10").textContent = "O";
                 document.getElementById("10").style.pointerEvents = "none";
+                newYPos = 1;
+                newXPos = 0;
                 legalMove = true;
             }
         }
@@ -356,16 +415,13 @@ function opponentPlay(xPos,yPos){
             }
         }
     }
-
-    console.log(legalMove);
     if(!legalMove){
-        console.log("hey")
         let move = 1;
         while(move == 1){
             for(let i = 0; i < 3; i++){
                 for(let j = 0; j < 3; j++){
                     if(document.getElementById(i.toString()+j.toString()).textContent == ""){
-                        document.getElementById(i.toString()+j.toString()).textContent = "0";
+                        document.getElementById(i.toString()+j.toString()).textContent = "O";
                         document.getElementById(i.toString()+j.toString()).style.pointerEvents = "none";
                         move = 2;
                         j = i = 3;
@@ -375,7 +431,7 @@ function opponentPlay(xPos,yPos){
         }
     }
 
-    //Check for winner
+    //Check for winnerarray
     //checkWinner(player,xPos,yPos);
 
 }
