@@ -32,11 +32,11 @@ const gameBoard = (function () {
                         let opponentResult = opponentPlay(i,j);
                         //If the opponent wins here, we need to reset
                         if(opponentResult){
-                            resetBoard();
+                            setTimeout(resetBoard, 1000)
                         }
                     }else{
                         console.log("The board reset")
-                        resetBoard();
+                        setTimeout(resetBoard, 1000)
                     }
 
                     //
