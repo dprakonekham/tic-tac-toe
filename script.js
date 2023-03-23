@@ -26,7 +26,6 @@ const gameBoard = (function () {
                     gridElement.style.pointerEvents = "none";
                     //Check for winner by using location of the cell as the argument
                     let result = checkWinner(1,i,j);
-                    console.log("this is the result: " + result.toString())
                     if(result == false){
                         //If player did not win, play the opponent move and get the result
                         let opponentResult = opponentPlay(i,j);
@@ -73,292 +72,241 @@ resetButton.addEventListener(`click`, function(e){
 
 function checkWinner(player,xPos,yPos){
     let coordinates = xPos.toString()+yPos.toString();
-    console.log("coordinates: " + coordinates);
     let winner = false;
     if(player == 1){
         gameBoard.turnCounter += 1;
-        console.log("Turn:" + gameBoard.turnCounter);
         //On turn 3 start checking for winner
         if(gameBoard.turnCounter >= 3 && gameBoard.turnCounter  < 5){
             if(coordinates == "11"){//Starting with (0,0)
                 //For the middle cell (1,1), need to check these
                 if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[2][1].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[0][2].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[1][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "00"){//Now the top left corner
                 if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = (gameBoard.playerScore).toString();
                 }
             }else if(coordinates == "02"){//Now the top right corner
                 if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "20"){//Now the bottom left corner
                 if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "22"){//Now the bottom right corner
                 if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "01"){//Now the top middle
                 if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][1].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "12"){//Now the right middle
                 if(gameBoard.board[0][2].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[1][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "21"){//Now the bottom middle
                 if(gameBoard.board[2][2].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][1].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "10"){//Now the left middle
                 if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[1][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }
         }else if(gameBoard.turnCounter  == 5){
-            console.log("turn 5")
             //On turn 5, the whole board will be filled
             //Check for winner, if not, tie
             if(coordinates == "11"){//Starting with (0,0)
             //For the middle cell (1,1), need to check these
                 if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[2][1].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[0][2].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[1][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "00"){//Now the top left corner
                 if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "02"){//Now the top right corner
                 if(gameBoard.board[0][1].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "20"){//Now the bottom left corner
                 if(gameBoard.board[1][0].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "22"){//Now the bottom right corner
                 if(gameBoard.board[2][1].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][2].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "01"){//Now the top middle
                 if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[0][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[2][1].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "12"){//Now the right middle
                 if(gameBoard.board[0][2].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[1][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "21"){//Now the bottom middle
                 if(gameBoard.board[2][2].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[0][1].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }else if(coordinates == "10"){//Now the left middle
                 if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[2][0].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }else if(gameBoard.board[1][1].textContent == "X" && gameBoard.board[1][2].textContent == "X"){
-                    console.log("You win")
                     winner = true;
                     gameBoard.playerScore += 1;
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
@@ -367,7 +315,6 @@ function checkWinner(player,xPos,yPos){
 
         if(!winner){
             //Add 1 to both scores
-            console.log("You tied")
             winner = true;
             gameBoard.playerScore += 1;
             pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
@@ -377,149 +324,122 @@ function checkWinner(player,xPos,yPos){
     }
     }else if(player == 2){
         if(gameBoard.turnCounter >= 3 && gameBoard.turnCounter  < 5){
-            console.log(xPos.toString()+yPos.toString())
             if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[0][1].textContent == "O" && gameBoard.board[2][1].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[0][2].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][2].textContent == "O" && gameBoard.board[1][0].textContent == "O"){
-                console.log("You lose")  
                 winner = true; 
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }
         }else if(coordinates == "00"){//Now the top left corner
             if(gameBoard.board[0][1].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][0].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }
         }else if(coordinates == "02"){//Now the top right corner
             if(gameBoard.board[0][1].textContent == "O" && gameBoard.board[0][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][2].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }
         }else if(coordinates == "20"){//Now the bottom left corner
             if(gameBoard.board[1][0].textContent == "O" && gameBoard.board[0][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[2][1].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }
         }else if(coordinates == "22"){//Now the bottom right corner
             if(gameBoard.board[2][1].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 ooScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[0][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][2].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }
         }else if(coordinates == "01"){//Now the top middle
             if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[2][1].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }
         }else if(coordinates == "12"){//Now the right middle
             if(gameBoard.board[0][2].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[1][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }
         }else if(coordinates == "21"){//Now the bottom middle
             if(gameBoard.board[2][2].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[0][1].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }
         }else if(coordinates == "10"){//Now the left middle
             if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[1][2].textContent == "O"){
-                console.log("You lose")
                 winner = true;
                 gameBoard.opponentScore += 1;
                 oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
             }
         }
     }
-    console.log("This is winner status: " + winner.toString())
     if(winner){
-        console.log("The turn counter reset")
         gameBoard.turnCounter = 0;
     }
     return winner;
