@@ -24,15 +24,22 @@ const gameBoard = (function () {
                     gridElement.textContent = "X";
                     //make div unclickable
                     gridElement.style.pointerEvents = "none";
-                    console.log(i.toString()+j.toString());
                     //Check for winner by using location of the cell as the argument
                     let result = checkWinner(1,i,j);
                     console.log("this is the result: " + result.toString())
                     if(result == false){
-                        opponentPlay(i,j);
+                        //If player did not win, play the opponent move and get the result
+                        let opponentResult = opponentPlay(i,j);
+                        //If the opponent wins here, we need to reset
+                        if(opponentResult){
+                            resetBoard();
+                        }
                     }else{
+                        console.log("The board reset")
                         resetBoard();
                     }
+
+                    //
                 };
                 gridElement.addEventListener(`click`, clickEvent)
                 gameContainer.appendChild(gridElement);
@@ -66,13 +73,13 @@ resetButton.addEventListener(`click`, function(e){
 
 function checkWinner(player,xPos,yPos){
     let coordinates = xPos.toString()+yPos.toString();
+    console.log("coordinates: " + coordinates);
     let winner = false;
     if(player == 1){
         gameBoard.turnCounter += 1;
         console.log("Turn:" + gameBoard.turnCounter);
         //On turn 3 start checking for winner
         if(gameBoard.turnCounter >= 3 && gameBoard.turnCounter  < 5){
-            console.log(xPos.toString()+yPos.toString())
             if(coordinates == "11"){//Starting with (0,0)
                 //For the middle cell (1,1), need to check these
                 if(gameBoard.board[0][0].textContent == "X" && gameBoard.board[2][2].textContent == "X"){
@@ -368,7 +375,7 @@ function checkWinner(player,xPos,yPos){
             oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
         }
     }
-    }else{
+    }else if(player == 2){
         if(gameBoard.turnCounter >= 3 && gameBoard.turnCounter  < 5){
             console.log(xPos.toString()+yPos.toString())
             if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
@@ -510,7 +517,9 @@ function checkWinner(player,xPos,yPos){
             }
         }
     }
+    console.log("This is winner status: " + winner.toString())
     if(winner){
+        console.log("The turn counter reset")
         gameBoard.turnCounter = 0;
     }
     return winner;
@@ -891,6 +900,6 @@ function opponentPlay(xPos,yPos){
             }
         }
     }
-    checkWinner(2,newXPos,newYPos);
+    return checkWinner(2,newXPos,newYPos);
 
 }
