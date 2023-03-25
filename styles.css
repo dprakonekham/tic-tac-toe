@@ -78,9 +78,11 @@ table {
     top: 50%;
     transform: translate(-50%, -50%);
     color: green;
+    background-color: white;
     border: 1px solid white;
     outline: solid;
     padding: 25px;
+    opacity: 0.9;
 }
 .loseWindow{
     display: none;
@@ -89,9 +91,11 @@ table {
     top: 50%;
     transform: translate(-50%, -50%);
     color: green;
+    background-color: white;
     border: 1px solid white;
     outline: solid;
     padding: 25px;
+    opacity: 0.9;
 }
 .tieWindow{
     display: none;
@@ -100,7 +104,9 @@ table {
     top: 50%;
     transform: translate(-50%, -50%);
     color: green;
+    background-color: white;
     border: 1px solid white;
     outline: solid;
     padding: 25px;
+    opacity: 0.9;
 }
