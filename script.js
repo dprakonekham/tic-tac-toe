@@ -1,6 +1,9 @@
 const gameContainer = document.getElementById("game-container");
 const pScore = document.getElementById("pScore");
 const oScore = document.getElementById("oScore");
+const wWindow = document.getElementById("wWindow");
+const lWindow = document.getElementById("lWindow");
+const tWindow = document.getElementById("tWindow");
 
 const gameBoard = (function () {
     let turnCounter = 0;
@@ -34,7 +37,6 @@ const gameBoard = (function () {
                             setTimeout(resetBoard, 1000)
                         }
                     }else{
-                        console.log("The board reset")
                         setTimeout(resetBoard, 1000)
                     }
 
@@ -312,7 +314,6 @@ function checkWinner(player,xPos,yPos){
                     pScore.textContent = ("Your Score: " + (gameBoard.playerScore).toString());
                 }
             }
-
         if(!winner){
             //Add 1 to both scores
             winner = true;
@@ -439,8 +440,29 @@ function checkWinner(player,xPos,yPos){
             }
         }
     }
-    if(winner){
+    if(winner && player == 1 && gameBoard.turnCounter == 5){
+        //You win
         gameBoard.turnCounter = 0;
+        tWindow.style.display = "block";
+        setTimeout(function(){
+            tWindow.style.display = "none";
+        }, 900);
+
+    }else if(winner && player == 2){
+        //You lose
+        gameBoard.turnCounter = 0;
+        lWindow.style.display = "block";
+        setTimeout(function(){
+            lWindow.style.display = "none";
+        }, 900);
+
+    }else if(winner && player == 1){
+        //Tie game
+        gameBoard.turnCounter = 0;
+        wWindow.style.display = "block";
+        setTimeout(function(){
+            wWindow.style.display = "none";
+        }, 900);
     }
     return winner;
 }

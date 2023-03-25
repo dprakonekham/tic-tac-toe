@@ -71,3 +71,36 @@ table {
     align-items: center;
     justify-content: center;
 }
+.winWindow{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: green;
+    border: 1px solid white;
+    outline: solid;
+    padding: 25px;
+}
+.loseWindow{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: green;
+    border: 1px solid white;
+    outline: solid;
+    padding: 25px;
+}
+.tieWindow{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: green;
+    border: 1px solid white;
+    outline: solid;
+    padding: 25px;
+}
