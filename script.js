@@ -324,122 +324,125 @@ function checkWinner(player,xPos,yPos){
         }
     }
     }else if(player == 2){
+        console.log(xPos.toString(),yPos.toString());
         if(gameBoard.turnCounter >= 3 && gameBoard.turnCounter  < 5){
-            if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[0][1].textContent == "O" && gameBoard.board[2][1].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[0][2].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][2].textContent == "O" && gameBoard.board[1][0].textContent == "O"){
-                winner = true; 
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }
-        }else if(coordinates == "00"){//Now the top left corner
-            if(gameBoard.board[0][1].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][0].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }
-        }else if(coordinates == "02"){//Now the top right corner
-            if(gameBoard.board[0][1].textContent == "O" && gameBoard.board[0][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][2].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }
-        }else if(coordinates == "20"){//Now the bottom left corner
-            if(gameBoard.board[1][0].textContent == "O" && gameBoard.board[0][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[2][1].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }
-        }else if(coordinates == "22"){//Now the bottom right corner
-            if(gameBoard.board[2][1].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                ooScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[0][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][2].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }
-        }else if(coordinates == "01"){//Now the top middle
-            if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[2][1].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }
-        }else if(coordinates == "12"){//Now the right middle
-            if(gameBoard.board[0][2].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[1][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }
-        }else if(coordinates == "21"){//Now the bottom middle
-            if(gameBoard.board[2][2].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[0][1].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }
-        }else if(coordinates == "10"){//Now the left middle
-            if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
-            }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[1][2].textContent == "O"){
-                winner = true;
-                gameBoard.opponentScore += 1;
-                oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+            if(coordinates == "11"){//Middle
+                if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[0][1].textContent == "O" && gameBoard.board[2][1].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[0][2].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    Score.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][2].textContent == "O" && gameBoard.board[1][0].textContent == "O"){
+                    winner = true; 
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                    }
+                }
+            }else if(coordinates == "00"){//Now the top left corner
+                if(gameBoard.board[0][1].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][0].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }
+            }else if(coordinates == "02"){//Now the top right corner
+                if(gameBoard.board[0][1].textContent == "O" && gameBoard.board[0][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][2].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }
+            }else if(coordinates == "20"){//Now the bottom left corner
+                if(gameBoard.board[1][0].textContent == "O" && gameBoard.board[0][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[2][1].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }
+            }else if(coordinates == "22"){//Now the bottom right corner
+                if(gameBoard.board[2][1].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    ooScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[0][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][2].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }
+            }else if(coordinates == "01"){//Now the top middle
+                if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[0][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[2][1].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }
+            }else if(coordinates == "12"){//Now the right middle
+                if(gameBoard.board[0][2].textContent == "O" && gameBoard.board[2][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[1][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }
+            }else if(coordinates == "21"){//Now the bottom middle
+                if(gameBoard.board[2][2].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[0][1].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }
+            }else if(coordinates == "10"){//Now the left middle
+                if(gameBoard.board[0][0].textContent == "O" && gameBoard.board[2][0].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }else if(gameBoard.board[1][1].textContent == "O" && gameBoard.board[1][2].textContent == "O"){
+                    winner = true;
+                    gameBoard.opponentScore += 1;
+                    oScore.textContent = ("Their Score: " + (gameBoard.opponentScore).toString());
+                }
             }
         }
-    }
     if(winner && player == 1 && gameBoard.turnCounter == 5){
         //You win
         gameBoard.turnCounter = 0;
